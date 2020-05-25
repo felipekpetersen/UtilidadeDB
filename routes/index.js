@@ -22,6 +22,31 @@ router.post('/createUser', async function (req, res, next) {
   }
 });
 
+router.post('/enterEvent', async function (req, res, next) {
+  let user = await User.findOne({ id: req.params.userId })
+  let event = await Event.findOne({ id: req.params.eventId })
+  if (user) {
+    if (!user.events) { //push?, pode ser 
+      user.events = []
+    }
+    try {
+      user.events.push(event._id) //user.push(newEvent) ???
+      await user.save()
+    }  catch (err) {
+      res.json({ 
+        result: false 
+      })
+    }
+    res.json({ 
+      result: true 
+    })
+  } else {
+    res.json({ 
+      result: false 
+    })
+  }
+});
+
 router.get('/getEvents/:userId', async function (req, res, next) {
   let user = await User.findOne({ id: req.params.userId })
   // let location = await Location.findOne({ })
