@@ -1,0 +1,36 @@
+{
+  "name": "hackthon-stefanini",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "npm ci"
+  },
+  "dependencies": {
+    "async": "^2.6.1",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "hbs": "^4.1.1",
+    "http-errors": "~1.6.2",
+    "mongodb": "^3.5.7",
+    "mongoose": "^5.7.5",
+    "mongoose-autopopulate": "^0.12.2",
+    "morgan": "~1.9.0"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaatheusGois/Hackathon-Stefanini.git"
+  },
+  "keywords": [],
+  "author": "Matheus Gois <matheusgoislimasilva@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MaatheusGois/Hackathon-Stefanini/issues"
+  },
+  "homepage": "https://github.com/MaatheusGois/Hackathon-Stefanini#readme",
+  "devDependencies": {},
+  "description": ""
+}
