@@ -163,6 +163,8 @@ router.post('/updateEvent', async function (req, res, next) {
       event.name = req.body.event.name
       event.color = req.body.event.color
       event.date = req.body.event.date
+      event.startHour = req.body.event.startHour
+      event.endHour = req.body.event.endHour
       // event.shoppingList = req.body.event.shoppingList
       // event.location = req.body.event.location
 
