@@ -65,7 +65,7 @@ router.get('/getEvents/:userId', async function (req, res, next) {
 });
 
 router.post('/createEvent', async function (req, res, next){
-  let user = await User.findOne({ id: req.body.userId})
+  let user = await User.findOne({ id: req.body.event.ownerId})
   // console.log('user: ', user)
 
   if (user) {
