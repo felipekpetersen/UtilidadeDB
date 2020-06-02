@@ -74,16 +74,18 @@ router.post('/createEvent', async function (req, res, next){
       let newEvent = new Event(req.body.event)
 
       // try {
+      if (req.body.location) {
         let newLocation = await Location.create(req.body.location) // await newLocation.save()
         newEvent.location = newLocation._id
+      }
       // } catch (err) {
       //   res.json({ 
       //     result: false 
       //   })
       // }
-
-      let shoppingList = req.body.shoppingList
-
+      if (req.body.shoppingList) {
+        let shoppingList = req.body.shoppingList
+      
       //popula o shoppiglist do evento 
       // try {
         let newList = []
@@ -91,6 +93,7 @@ router.post('/createEvent', async function (req, res, next){
           let newItem = await ShoppingList.create(shoppingList[i]) // await newItem.save() // tem que criar o obj no banco
           newList.push(newItem._id) // já é um arr //mas pq vc esta fazendo push nele mesmo? || igual ao append
         }
+      
       // } catch (err) {
       //   res.json({ 
       //     result: false 
@@ -101,6 +104,7 @@ router.post('/createEvent', async function (req, res, next){
       // try {
         newEvent.shoppingList = newList // [aqui é um arr de _id], mesmo que [String]
         await newEvent.save()
+      }
       // } catch (err) {
       //   res.json({ 
       //     result: false 
