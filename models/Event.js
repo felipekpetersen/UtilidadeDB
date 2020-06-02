@@ -11,7 +11,7 @@ const Event = new Schema({
     name: String,
     id: String,
     color: String,
-    date: Date, 
+    date: String, 
     shoppingListName: String,
     shoppingList: [{
         type: mongoose.Schema.Types.ObjectId,

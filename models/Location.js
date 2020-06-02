@@ -4,7 +4,7 @@ const autopopulate = require('mongoose-autopopulate');
 
 const Location = new Schema({
    
-    id: Number,
+    id: String,
     latitude: Number,
     longitude: Number,
     addressLine: String,
