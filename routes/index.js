@@ -18,7 +18,7 @@ router.post('/createUser', async function (req, res, next) {
     res.json({ result: true })
   } catch (err) {
     console.log('Error: ', err)
-    res.json({ result: false })
+    res.json({ result: err })
   }
 });
 
@@ -156,7 +156,6 @@ router.post('/updateWhoBrings', async function (req, res, next) {
 
 router.post('/updateEvent', async function (req, res, next) {
   let event = await Event.findOne({id:req.body.event.id})
-
 
   if (event) {
     try {
