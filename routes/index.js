@@ -13,6 +13,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/createUser', async function (req, res, next) {
   let newUser = new User(req.body)
+  console.log(req.body)
   try {
     await newUser.save()
     res.json({ result: true })

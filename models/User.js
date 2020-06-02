@@ -5,7 +5,7 @@ const autopopulate = require('mongoose-autopopulate');
 const User = new Schema({
     name: {
         type: String,
-        required: true
+        //required: true
     },
     id: String,
     events: [{
