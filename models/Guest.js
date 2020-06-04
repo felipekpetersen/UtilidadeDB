@@ -11,4 +11,4 @@ const Guest = new Schema({
 }, {timestamps: true})
 
 Guest.plugin(autopopulate);
-module.exports = mongoose.model('Guest', User)
+module.exports = mongoose.model('Guest', Guest)

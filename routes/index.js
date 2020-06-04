@@ -93,7 +93,7 @@ router.post('/createEvent', async function (req, res, next){
         for (let i = 0; i < shoppingList.length; i++) {
           let newItem = await ShoppingList.create(shoppingList[i]) // await newItem.save() // tem que criar o obj no banco
           newList.push(newItem._id) // já é um arr //mas pq vc esta fazendo push nele mesmo? || igual ao append
-        }
+        } 
       
       // } catch (err) {
       //   res.json({ 
