@@ -24,7 +24,12 @@ const Event = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Location',
         autopopulate: true
-    }
+    },
+    invitees: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Guest',
+        autopopulate: true
+    }]
 
 }, {timestamps: true})
 

@@ -5,6 +5,7 @@ const User =  require('../models/User')
 const Location =  require('../models/Location')
 const ShoppingList =  require('../models/ShoppingList')
 const Event =  require('../models/Event')
+const Guest =  require('../models/Guest')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -105,6 +106,20 @@ router.post('/createEvent', async function (req, res, next){
         newEvent.shoppingList = newList // [aqui é um arr de _id], mesmo que [String]
         await newEvent.save()
       }
+
+      if (req.body.invitees) {
+        let invitees = req.body.invitees
+
+        let newInvitees = []
+        for (let i = 0; i < invitees.length; i++) {
+          let newItem = await Guest.create(invitees[i]) // await newItem.save() // tem que criar o obj no banco
+          newInvitees.push(newItem._id) // já é um arr //mas pq vc esta fazendo push nele mesmo? || igual ao append
+        }
+        newEvent.invitees = newInvitees // [aqui é um arr de _id], mesmo que [String]
+        await newEvent.save()
+
+      }
+
       // } catch (err) {
       //   res.json({ 
       //     result: false 
@@ -117,7 +132,7 @@ router.post('/createEvent', async function (req, res, next){
       }
 
       try {
-        user.events.push(newEvent._id) //user.push(newEvent) ???
+        user.events.push(newEvent._id) 
         await user.save()
       }  catch (err) {
         res.json({ 
@@ -125,8 +140,8 @@ router.post('/createEvent', async function (req, res, next){
         })
       }
 
-      res.json({ //acho que já funfa
-				result: true //ok vou testar!! Thanksssssss, noizessss
+      res.json({
+				result: true
       })
       
     } catch (err) {
@@ -135,9 +150,9 @@ router.post('/createEvent', async function (req, res, next){
 			})
     }
   } else { 
-    res.json({ //okkkk! thansksss
+    res.json({ 
 			result: false 
-		}) //ahhh
+		}) 
   }
 });
 

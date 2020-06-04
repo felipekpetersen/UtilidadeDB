@@ -5,6 +5,7 @@ require('./User');
 require('./Event');
 require('./Location');
 require('./ShoppingList');
+require('./Guest');
 
 const options = {
     useNewUrlParser: true
