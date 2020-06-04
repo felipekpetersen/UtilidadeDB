@@ -51,6 +51,7 @@ router.post('/enterEvent', async function (req, res, next) {
 
 router.get('/getEvents/:userId', async function (req, res, next) {
   let user = await User.findOne({ id: req.params.userId })
+  console.log("user: ", user)
   // let location = await Location.findOne({ })
   if (user) {
     try {
@@ -67,7 +68,7 @@ router.get('/getEvents/:userId', async function (req, res, next) {
 
 router.post('/createEvent', async function (req, res, next){
   let user = await User.findOne({ id: req.body.event.ownerId})
-  // console.log('user: ', user)
+  console.log('user: ', user)
 
   if (user) {
     try {
@@ -95,14 +96,7 @@ router.post('/createEvent', async function (req, res, next){
           newList.push(newItem._id) // já é um arr //mas pq vc esta fazendo push nele mesmo? || igual ao append
         } 
       
-      // } catch (err) {
-      //   res.json({ 
-      //     result: false 
-      //   })
-      // }
-
-      //coloca location no newEvent --- aqui no newEvent, quando pego ele, parece que ta com o objeto inteiro
-      // try {
+     
         newEvent.shoppingList = newList // [aqui é um arr de _id], mesmo que [String]
         await newEvent.save()
       }
@@ -120,13 +114,6 @@ router.post('/createEvent', async function (req, res, next){
 
       }
 
-      // } catch (err) {
-      //   res.json({ 
-      //     result: false 
-      //   })
-      // }
-
-      //coloca o evento no usuario --- aqui parece que no user tem so a ref do objeto 
       if (!user.events) { //push?, pode ser 
         user.events = []
       }
@@ -136,7 +123,7 @@ router.post('/createEvent', async function (req, res, next){
         await user.save()
       }  catch (err) {
         res.json({ 
-          result: false 
+          result: err 
         })
       }
 
@@ -146,7 +133,7 @@ router.post('/createEvent', async function (req, res, next){
       
     } catch (err) {
       res.json({ 
-				result: false 
+				result: err 
 			})
     }
   } else { 
